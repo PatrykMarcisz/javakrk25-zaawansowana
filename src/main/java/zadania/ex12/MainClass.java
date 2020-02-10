@@ -1,7 +1,5 @@
 package zadania.ex12;
 
-import jdk.nashorn.internal.runtime.Version;
-
 public class MainClass {
     public static void main(String[] args) {
         Vehicle a = new Vehicle();
@@ -24,6 +22,15 @@ class Vehicle {
     int wheelsCounter;
     String color;
     double maxSpeed;
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "wheelsCounter=" + wheelsCounter +
+                ", color='" + color + '\'' +
+                ", maxSpeed=" + maxSpeed +
+                '}';
+    }
 
     public Vehicle(){
         this(4, "red", 250.0);
