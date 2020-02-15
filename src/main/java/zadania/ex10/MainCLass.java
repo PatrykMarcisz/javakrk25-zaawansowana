@@ -1,6 +1,6 @@
 package zadania.ex10;
 
-public class MainClass {
+public class MainCLass {
     public static void main(String[] args) {
         X x = new Y(5);
         System.out.println(x.i);
