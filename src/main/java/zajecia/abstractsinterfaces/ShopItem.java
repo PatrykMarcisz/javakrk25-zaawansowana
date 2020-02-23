@@ -1,9 +1,12 @@
 package zajecia.abstractsinterfaces;
 
+import java.util.function.Function;
+
 public class ShopItem {
 
     double price;
 
+    @FunctionalInterface
     interface Discount {
         double discountInDollars(double basePrice);
     }
@@ -51,6 +54,9 @@ public class ShopItem {
                 return  basePrice;
             }
         };
+
+        Function<Double, Double> discountFuntion = basePrice -> basePrice - 5 > 0 ? basePrice - 5 : basePrice;
+        discountFuntion.apply(price);
 
         return discount.discountInDollars(price);
     }

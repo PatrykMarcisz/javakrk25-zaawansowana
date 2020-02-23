@@ -30,6 +30,7 @@ class Human {
 
     public void kursPlywania(){
         System.out.println("udaje sie na kurs plywania");
+        canSwim = true;
     }
 
     public void swim() throws CannotSwimException {
