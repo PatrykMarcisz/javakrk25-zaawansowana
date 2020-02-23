@@ -12,12 +12,26 @@ public abstract class Figure implements Perimeterable {
         System.out.println(circle.getField());
         System.out.println(triangle.getField());
 
+        System.out.println("==================");
+
+        printField(circle);
+        printField(triangle);
+
         Perimeterable p1 = circle;
         p1.getPerimeter();
 
         Circle c = (Circle)circle;
 
     }
+
+    static void printField(Figure figure){
+        if(figure instanceof Circle){
+            System.out.println("parametr r " + ((Circle)figure).r);
+        }
+        System.out.println(figure.getField());
+
+    }
+
 }
 
 class Circle extends Figure {

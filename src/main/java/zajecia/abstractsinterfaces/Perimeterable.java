@@ -6,5 +6,8 @@ public interface Perimeterable {
 
     //public abstract double getPerimeter();
 
+    default void interfaceMethod(){
+        System.out.println("metoda interfejsu");
+    }
 
 }
