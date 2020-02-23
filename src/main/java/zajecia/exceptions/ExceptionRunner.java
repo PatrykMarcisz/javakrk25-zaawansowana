@@ -15,7 +15,23 @@ public class ExceptionRunner {
     }
 
     private static void ex2(){
+        Human[] humans = new Human[10];
+        for(int i=0; i<humans.length; i++){
+            humans[i] = new Human();
+        }
 
+        for(Human h : humans){
+            System.out.println("======================= " + h.number);
+            try {
+                h.swim();
+            } catch (CannotSwimException e) {
+                if(e instanceof HumanCannotSwimException) {
+                    ((HumanCannotSwimException)e).sendToSwimSchool();
+                }
+            } catch (DangerInTheWater e){
+
+            }
+        }
     }
 
     public String exceptions() throws FileNotFoundException {
