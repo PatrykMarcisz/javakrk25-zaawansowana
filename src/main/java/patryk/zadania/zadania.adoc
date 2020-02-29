@@ -1,0 +1,62 @@
+=== Zadanie 1
+1. Stwórz klasę Member w pakiecie zadania.zadanie1, zawierającą prywatne pola:
+a. String name
+b. String email
+c. Integer id;
+2. Dodaj publiczny konstruktor ustawiający te 3 wartości
+3. Dodaj trzy metody publiczne typu get (akcesory), zwracające poszczególne pola klasy
+4. Stwórz klasę MainClass, w ramach której znajduje się metoda main, sprawdź poprawność działania powyższych metod
+5. Stwórz klasę Team, zawierającą pola:
+a. String name
+b. Member[] members
+6. Stwórz konstruktor, który będzie mógł być wykorzystany w celu stworzenia drużyny. Niech przyjmuje parametr name, oraz parametr typu varargs np. (Member ... members)
+7. Stwórz metody klasy Team, które zwracaja ilość osób w drużynie, oraz tablicę członków tej drużyny
+8. w klasie MainClass, utwórz kilku (3-4) członków drużyny, a następnie przy ich pomocy, stwórz obiekt typu Team. sprawdź działanie metod z punktu 7. Wypisz zawodników przy pomocy pętli for-each lub for, bazując na tablicy
+
+=== Zadanie 2
+1. Stwórz klasę Point2D, która zawiera dwa pola typu double: x oraz y;
+2. Utwórz dwa konstruktory obiektów tej klasy:
+
+a. jeden będzie ustawiał pola x oraz y na podstawie parametrów przekazanych przez użytkownika jako parametry konstruktora
+b. drugi będzie ustawiał pola x oraz y na podstawie wartości pól wyciągniętych z obiektu tej samej klasy, podanej jako parametr konstruktora
+
+3. Utwórz metody:
+    a. zwracające odpowiednio wartości pól x oraz y (getter / akcesor)
+    b. wyświetlające obiekt w formie string (toString)
+    c. porównujące obiekty między sobą (equals)
+
+4. Utwórz kilka obiektów tej klasy wykorzystując oba konstruktory
+
+5. Stwórz klasę Point3D, która rozszerza klasę Point2D rozszerzajac ją o jeden dodatkowy parametr: double z
+6. Dodaj do niej konstruktory bazujące na konstruktorach klasy point2D (konstruktor super())
+7. Nadpisz metody toString oraz equals dla klasy Point3D
+
+=== Zadanie 3
+1. Stwórz klasę Osoba, która zawiera następujące pola:
+    a. Imie
+    b. Nazwisko
+    c. Pesel (możesz użyć programu do walidacji peselu, aby sprawdzić czy podany pesel jest poprawny ;)
+2. Zdefiniuj konstruktor dla tej klasy, przyjmujący 3 wspomniane wyżej parametry oraz metody
+    a. przedstawSie() zwracający imię i nazwisko w formie String
+    b. nadpisz metodę toString() z klasy Object
+    c. nadpisz metodę equals() z klasy Object
+3. Utwórz klasę Uczen, dziedziczaca po klasie Osoba
+4. Utwórz klasę UczenSzkoly, dziedziczącą po klasie Uczen,
+    a. klasa zawiera dodatkowe pole nazwaSzkoly
+    b. posiada konstruktor wykorzystujący konstruktor klasy nadrzędnej
+    c. klasa zawiera metodę zmienSzkole(), która pozwala na zmianę szkoły przez ucznia (wartości pola nazwaSzkoly w klasie UczenSzkoly)
+    d. nadpisz metody toString() oraz equals()
+    e. dla ambitnych: stwórz oddzielną klasę Szkola reprezentującą szkołę
+5. Utworz klasę UczenKlasy, ktory dziedziczy po klasie UczenSzkoly
+    a. klasa zaawiera dodatkowe pole : klasa
+    b. wykorzystuje konstruktor klasy nadrzędnej
+    c. posiada metody getKlasa() pozwalającą pobrać nazwę klasy, oraz zmienKlase() zmieniajacą wartość pola klasa w UczenKlasy
+    d. nadpisz metody toString() oraz equals()
+6. Dla klasy UczenKlasy, stwórz konstruktory, które pozwalają stworzyć obiekt UczenKlasy, wykorzystując parametry konstruktora typów: UczenSzkoly, Uczen oraz Osoba + dodatkowe wymagane parametry
+
+=== Zadanie 4
+1. Utwórz klasę Drzewo z polami boolean wiecznieZielone, int wysokosc oraz String przekrojDrzewa, następnie zaimplementuj konstruktory inicjujące pola i metodę String toString() wypisującą na konsoli informacje o drzewie.
+2. Utwórz klasę DrzewoIglaste dziedziczącą po klasie Drzewo, oraz definiująca pola int iloscIgiel i double dlugscSzyszki. Następnie przygotuj konstruktor inicjujący  wszystkie pola oraz metodę String toString() wypisującą na konsoli informacje o drzewie wraz z wartościami pól opisujących drzewo iglaste.
+3. Utwórz klasę DrzewoLisciaste dziedziczącą po klasie Drzewo, oraz definiująca pole int ksztaltLiscia i metodę String toString() wypisującą na konsoli wszystkie informacje o drzewie.
+4. Utwórz klasę DrzewoOwocowe dziedziczącą po klasie DrzewoLisciaste, oraz definiująca  pole String nazwaOwoca, podobnie jak w poprzednich zadaniach uzupełnij klasę o konstruktor i funkcjonalną metodę toString.
+5. Na koniec utwórz program (metoda main) w klasie MainClass, który wypełni tablicę Drzewo[] las drzewami takimi  jak: sosny, modrzewie, dęby, osiki, morelowce czy śliwy. Wykorzystując mechanizm polimorfizmu wyświetl wszystkie informacje o wszystkich drzewach (pętla for-each, lub zwykły for)
