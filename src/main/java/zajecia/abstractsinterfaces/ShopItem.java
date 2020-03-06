@@ -1,5 +1,6 @@
 package zajecia.abstractsinterfaces;
 
+import java.util.Objects;
 import java.util.function.Function;
 
 public class ShopItem {
@@ -61,4 +62,16 @@ public class ShopItem {
         return discount.discountInDollars(price);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ShopItem shopItem = (ShopItem) o;
+        return Double.compare(shopItem.price, price) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(price);
+    }
 }
