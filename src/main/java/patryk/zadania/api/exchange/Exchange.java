@@ -8,6 +8,9 @@ public class Exchange {
     private String base;
     private String date;
 
+    //generowany: settery, gettery, konstruktor ze wszystkimi argumentami,
+    //konstruktor bezargumentowy, toString
+
     public Exchange(Map<String, Double> rates, String base, String date) {
         this.rates = rates;
         this.base = base;
