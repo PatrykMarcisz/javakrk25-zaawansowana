@@ -1,55 +1,63 @@
 package patryk.zadania.api.corona;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.List;
 
 public class SummaryResponse {
-    private Global Global;
-    private List<Country> Countries;
-    private String Date;
+
+    @JsonProperty("Global")
+    private Global global;
+
+    @JsonProperty("Countries")
+    private List<Country> countries;
+
+    @JsonProperty("Date")
+    private String date;
 
     //gettery, settery,
     //toString
     //bezargumentowy i wszystkie argumenty konstruktor
 
     public SummaryResponse(Global global, List<Country> countries, String date) {
-        Global = global;
-        Countries = countries;
-        Date = date;
+        this.global = global;
+        this.countries = countries;
+        this.date = date;
     }
 
     public SummaryResponse() {
     }
 
     public patryk.zadania.api.corona.Global getGlobal() {
-        return Global;
+        return global;
     }
 
     public void setGlobal(patryk.zadania.api.corona.Global global) {
-        Global = global;
+        this.global = global;
     }
 
     public List<Country> getCountries() {
-        return Countries;
+        return countries;
     }
 
     public void setCountries(List<Country> countries) {
-        Countries = countries;
+        this.countries = countries;
     }
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.date = date;
     }
 
     @Override
     public String toString() {
         return "SummaryResponse{" +
-                "Global=" + Global +
-                ", Countries=" + Countries +
-                ", Date='" + Date + '\'' +
+                "Global=" + global +
+                ", Countries=" + countries +
+                ", Date='" + date + '\'' +
                 '}';
     }
 }

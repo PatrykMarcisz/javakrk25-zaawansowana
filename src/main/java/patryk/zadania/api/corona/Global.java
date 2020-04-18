@@ -1,82 +1,90 @@
 package patryk.zadania.api.corona;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Global {
-    private String NewConfirmed;
-    private String TotalConfirmed;
-    private String NewDeaths;
-    private String TotalDeaths;
-    private String NewRecovered;
-    private String TotalRecovered;
+    @JsonProperty("NewConfirmed")
+    private String newConfirmed;
+    @JsonProperty("TotalConfirmed")
+    private String totalConfirmed;
+    @JsonProperty("NewDeaths")
+    private String newDeaths;
+    @JsonProperty("TotalDeaths")
+    private String totalDeaths;
+    @JsonProperty("NewRecovered")
+    private String newRecovered;
+    @JsonProperty("TotalRecovered")
+    private String totalRecovered;
 
     public Global() {
     }
 
     public Global(String newConfirmed, String totalConfirmed, String newDeaths, String totalDeaths, String newRecovered, String totalRecovered) {
-        NewConfirmed = newConfirmed;
-        TotalConfirmed = totalConfirmed;
-        NewDeaths = newDeaths;
-        TotalDeaths = totalDeaths;
-        NewRecovered = newRecovered;
-        TotalRecovered = totalRecovered;
+        this.newConfirmed = newConfirmed;
+        this.totalConfirmed = totalConfirmed;
+        this.newDeaths = newDeaths;
+        this.totalDeaths = totalDeaths;
+        this.newRecovered = newRecovered;
+        this.totalRecovered = totalRecovered;
     }
 
     @Override
     public String toString() {
         return "Global{" +
-                "NewConfirmed='" + NewConfirmed + '\'' +
-                ", TotalConfirmed='" + TotalConfirmed + '\'' +
-                ", NewDeaths='" + NewDeaths + '\'' +
-                ", TotalDeaths='" + TotalDeaths + '\'' +
-                ", NewRecovered='" + NewRecovered + '\'' +
-                ", TotalRecovered='" + TotalRecovered + '\'' +
+                "NewConfirmed='" + newConfirmed + '\'' +
+                ", TotalConfirmed='" + totalConfirmed + '\'' +
+                ", NewDeaths='" + newDeaths + '\'' +
+                ", TotalDeaths='" + totalDeaths + '\'' +
+                ", NewRecovered='" + newRecovered + '\'' +
+                ", TotalRecovered='" + totalRecovered + '\'' +
                 '}';
     }
 
     public String getNewConfirmed() {
-        return NewConfirmed;
+        return newConfirmed;
     }
 
     public void setNewConfirmed(String newConfirmed) {
-        NewConfirmed = newConfirmed;
+        this.newConfirmed = newConfirmed;
     }
 
     public String getTotalConfirmed() {
-        return TotalConfirmed;
+        return totalConfirmed;
     }
 
     public void setTotalConfirmed(String totalConfirmed) {
-        TotalConfirmed = totalConfirmed;
+        this.totalConfirmed = totalConfirmed;
     }
 
     public String getNewDeaths() {
-        return NewDeaths;
+        return newDeaths;
     }
 
     public void setNewDeaths(String newDeaths) {
-        NewDeaths = newDeaths;
+        this.newDeaths = newDeaths;
     }
 
     public String getTotalDeaths() {
-        return TotalDeaths;
+        return totalDeaths;
     }
 
     public void setTotalDeaths(String totalDeaths) {
-        TotalDeaths = totalDeaths;
+        this.totalDeaths = totalDeaths;
     }
 
     public String getNewRecovered() {
-        return NewRecovered;
+        return newRecovered;
     }
 
     public void setNewRecovered(String newRecovered) {
-        NewRecovered = newRecovered;
+        this.newRecovered = newRecovered;
     }
 
     public String getTotalRecovered() {
-        return TotalRecovered;
+        return totalRecovered;
     }
 
     public void setTotalRecovered(String totalRecovered) {
-        TotalRecovered = totalRecovered;
+        this.totalRecovered = totalRecovered;
     }
 }

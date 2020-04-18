@@ -1,16 +1,28 @@
 package patryk.zadania.api.corona;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Country {
-    private String Country;
-    private String CountryCode;
-    private String Slug;
-    private String NewConfirmed;
-    private String TotalConfirmed;
-    private String NewDeaths;
-    private String TotalDeaths;
-    private String NewRecovered;
-    private String TotalRecovered;
-    private String Date;
+    @JsonProperty("Country")
+    private String country;
+    @JsonProperty("CountryCode")
+    private String countryCode;
+    @JsonProperty("Slug")
+    private String slug;
+    @JsonProperty("NewConfirmed")
+    private String newConfirmed;
+    @JsonProperty("TotalConfirmed")
+    private String totalConfirmed;
+    @JsonProperty("NewDeaths")
+    private String newDeaths;
+    @JsonProperty("TotalDeaths")
+    private String totalDeaths;
+    @JsonProperty("NewRecovered")
+    private String newRecovered;
+    @JsonProperty("TotalRecovered")
+    private String totalRecovered;
+    @JsonProperty("Date")
+    private String date;
 
     public Country() {
     }
@@ -18,109 +30,109 @@ public class Country {
     @Override
     public String toString() {
         return "Country{" +
-                "Country='" + Country + '\'' +
-                ", CountryCode='" + CountryCode + '\'' +
-                ", Slug='" + Slug + '\'' +
-                ", NewConfirmed='" + NewConfirmed + '\'' +
-                ", TotalConfirmed='" + TotalConfirmed + '\'' +
-                ", NewDeaths='" + NewDeaths + '\'' +
-                ", TotalDeaths='" + TotalDeaths + '\'' +
-                ", NewRecovered='" + NewRecovered + '\'' +
-                ", TotalRecovered='" + TotalRecovered + '\'' +
-                ", Date='" + Date + '\'' +
+                "Country='" + country + '\'' +
+                ", CountryCode='" + countryCode + '\'' +
+                ", Slug='" + slug + '\'' +
+                ", NewConfirmed='" + newConfirmed + '\'' +
+                ", TotalConfirmed='" + totalConfirmed + '\'' +
+                ", NewDeaths='" + newDeaths + '\'' +
+                ", TotalDeaths='" + totalDeaths + '\'' +
+                ", NewRecovered='" + newRecovered + '\'' +
+                ", TotalRecovered='" + totalRecovered + '\'' +
+                ", Date='" + date + '\'' +
                 '}';
     }
 
     public Country(String country, String countryCode, String slug, String newConfirmed, String totalConfirmed, String newDeaths, String totalDeaths, String newRecovered, String totalRecovered, String date) {
-        Country = country;
-        CountryCode = countryCode;
-        Slug = slug;
-        NewConfirmed = newConfirmed;
-        TotalConfirmed = totalConfirmed;
-        NewDeaths = newDeaths;
-        TotalDeaths = totalDeaths;
-        NewRecovered = newRecovered;
-        TotalRecovered = totalRecovered;
-        Date = date;
+        this.country = country;
+        this.countryCode = countryCode;
+        this.slug = slug;
+        this.newConfirmed = newConfirmed;
+        this.totalConfirmed = totalConfirmed;
+        this.newDeaths = newDeaths;
+        this.totalDeaths = totalDeaths;
+        this.newRecovered = newRecovered;
+        this.totalRecovered = totalRecovered;
+        this.date = date;
     }
 
     public String getCountry() {
-        return Country;
+        return country;
     }
 
     public void setCountry(String country) {
-        Country = country;
+        this.country = country;
     }
 
     public String getCountryCode() {
-        return CountryCode;
+        return countryCode;
     }
 
     public void setCountryCode(String countryCode) {
-        CountryCode = countryCode;
+        this.countryCode = countryCode;
     }
 
     public String getSlug() {
-        return Slug;
+        return slug;
     }
 
     public void setSlug(String slug) {
-        Slug = slug;
+        this.slug = slug;
     }
 
     public String getNewConfirmed() {
-        return NewConfirmed;
+        return newConfirmed;
     }
 
     public void setNewConfirmed(String newConfirmed) {
-        NewConfirmed = newConfirmed;
+        this.newConfirmed = newConfirmed;
     }
 
     public String getTotalConfirmed() {
-        return TotalConfirmed;
+        return totalConfirmed;
     }
 
     public void setTotalConfirmed(String totalConfirmed) {
-        TotalConfirmed = totalConfirmed;
+        this.totalConfirmed = totalConfirmed;
     }
 
     public String getNewDeaths() {
-        return NewDeaths;
+        return newDeaths;
     }
 
     public void setNewDeaths(String newDeaths) {
-        NewDeaths = newDeaths;
+        this.newDeaths = newDeaths;
     }
 
     public String getTotalDeaths() {
-        return TotalDeaths;
+        return totalDeaths;
     }
 
     public void setTotalDeaths(String totalDeaths) {
-        TotalDeaths = totalDeaths;
+        this.totalDeaths = totalDeaths;
     }
 
     public String getNewRecovered() {
-        return NewRecovered;
+        return newRecovered;
     }
 
     public void setNewRecovered(String newRecovered) {
-        NewRecovered = newRecovered;
+        this.newRecovered = newRecovered;
     }
 
     public String getTotalRecovered() {
-        return TotalRecovered;
+        return totalRecovered;
     }
 
     public void setTotalRecovered(String totalRecovered) {
-        TotalRecovered = totalRecovered;
+        this.totalRecovered = totalRecovered;
     }
 
     public String getDate() {
-        return Date;
+        return date;
     }
 
     public void setDate(String date) {
-        Date = date;
+        this.date = date;
     }
 }
