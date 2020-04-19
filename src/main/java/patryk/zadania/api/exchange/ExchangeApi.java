@@ -25,6 +25,11 @@ public class ExchangeApi {
                 );
     }
 
+    ExchangeApi(HttpClient httpClient, ObjectMapper mapper) {
+        this.httpClient = httpClient;
+        this.mapper = mapper;
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException {
         consoleVersion();
     }
@@ -45,12 +50,12 @@ public class ExchangeApi {
         System.out.print("Wprowadz walutę docelową: ");
         String destCurrency = test.validateCurrencyCode(availableCurrencies, scanner);
 
-        double course = test.getLatestCourseForCurrency(baseCurrency, destCurrency);
+        double course = test.getLatestExchangeRateForCurrency(baseCurrency, destCurrency);
         System.out.println("kurs to: " + (course * ammount));
         // /latest?base=USD&symbols=PLN,EUR
     }
 
-    public double getLatestCourseForCurrency(String baseCurrency, String destCurrency) throws IOException, InterruptedException {
+    public double getLatestExchangeRateForCurrency(String baseCurrency, String destCurrency) throws IOException, InterruptedException {
         String response = getResponseFromAPI("/latest?base=" + baseCurrency + "&symbols=" + destCurrency);
         return mapper.readValue(response, Exchange.class).getRates().get(destCurrency);
     }
