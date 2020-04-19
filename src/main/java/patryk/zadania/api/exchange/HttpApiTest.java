@@ -8,7 +8,6 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -20,6 +19,7 @@ public class HttpApiTest {
                         DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,
                         false
                 );
+
         Set<String> availableCurrencies = getAvailableCurrencies(exchangeRateClient, mapper);
         Scanner scanner = new Scanner(System.in);
         System.out.println(availableCurrencies);
@@ -38,8 +38,10 @@ public class HttpApiTest {
         // /latest?base=USD&symbols=PLN,EUR
     }
 
-    private static double getCourseFor(HttpClient client, ObjectMapper mapper,
+    public static double getCourseFor(HttpClient client, ObjectMapper mapper,
                                        String baseCurrency, String destCurrency) throws IOException, InterruptedException {
+        System.out.println(baseCurrency);
+        System.out.println(destCurrency);
         HttpRequest request = HttpRequest.newBuilder()
                 .GET() //POST //PUT //DELETE
                 .uri(URI.create("https://api.exchangeratesapi.io/latest?base=" + baseCurrency + "&symbols=" + destCurrency))
@@ -57,7 +59,7 @@ public class HttpApiTest {
         return baseCurrency;
     }
 
-    private static Set<String> getAvailableCurrencies(HttpClient client, ObjectMapper mapper) throws IOException, InterruptedException {
+    public static Set<String> getAvailableCurrencies(HttpClient client, ObjectMapper mapper) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .GET() //POST //PUT //DELETE
                 .uri(URI.create("https://api.exchangeratesapi.io/latest"))
