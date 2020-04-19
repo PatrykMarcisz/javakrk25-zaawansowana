@@ -3,19 +3,16 @@ package patryk.zadania.api.exchange;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.application.Application;
 import javafx.collections.FXCollections;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.http.HttpClient;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -24,11 +21,10 @@ public class CurrencyGui extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-
         VBox root = new VBox();
-
+        ExchangeApi api = new ExchangeApi();
         //pierwsza linia: "Podaj walutę źródłową" , [wybor]
-        Set<String> currencies = HttpApiTest.getAvailableCurrencies(HttpClient.newHttpClient(), new ObjectMapper());
+        Set<String> currencies = api.getAvailableCurrencies();
         FirstLine firstLine = new FirstLine("Podaj walutę źródłową", new ArrayList<>(currencies));
 
         //druga linijka: "podaj kwotę" [wybor]
@@ -41,16 +37,26 @@ public class CurrencyGui extends Application {
         ComboBox<String> availableCurrencies2 = new ComboBox<>(FXCollections.observableList(new ArrayList<>(currencies)));
         HBox thirdLine = new HBox(thirdLineLabel, availableCurrencies2);
 
-        root.getChildren().addAll(firstLine, secondLine, thirdLine);
+
+        //czwarta linijka: data
+        Label fourthLabel = new Label("Wybierz datę");
+        DatePicker picker = new DatePicker();
+
+        HBox fourthLine = new HBox(fourthLabel, picker);
+
+        root.getChildren().addAll(firstLine, secondLine, thirdLine, fourthLine);
 
         Button processButton = new Button("Licz wartość");
         Label result = new Label();
 
+
         processButton.setOnAction(e -> {
             try {
-                double courseFor = HttpApiTest.getCourseFor(HttpClient.newHttpClient(), new ObjectMapper(),
-                        firstLine.getAvailableCurrencies().getSelectionModel().getSelectedItem(),
-                        availableCurrencies2.getSelectionModel().getSelectedItem());
+                LocalDate value = picker.getValue();
+                String dateAsString = DateTimeFormatter.ISO_DATE.format(value);
+                double courseFor = api.getCourseForDate(firstLine.getAvailableCurrencies().getSelectionModel().getSelectedItem(),
+                        availableCurrencies2.getSelectionModel().getSelectedItem(),
+                        dateAsString);
                 result.setText(String.valueOf(courseFor));
             } catch (IOException ex) {
                 ex.printStackTrace();
@@ -73,11 +79,11 @@ public class CurrencyGui extends Application {
 
 }
 
-class FirstLine extends HBox{
+class FirstLine extends HBox {
     Label firstLineLabel;
     ComboBox<String> availableCurrencies;
 
-    public FirstLine(String labelText, List<String> comboBoxContent){
+    public FirstLine(String labelText, List<String> comboBoxContent) {
         this.firstLineLabel = new Label(labelText);
         this.availableCurrencies = new ComboBox<>(FXCollections.observableList(comboBoxContent));
         this.getChildren().addAll(firstLineLabel, availableCurrencies);
