@@ -20,6 +20,17 @@ public class CoronaMain {
         ObjectMapper mapper = new ObjectMapper();
         SummaryResponse summaryResponse = mapper.readValue(response.body(), SummaryResponse.class);
         System.out.println(summaryResponse);
+        double sum = summaryResponse.getCountries().stream()
+                .mapToDouble(x -> Double.parseDouble(x.getNewConfirmed()))
+                .sum();
+
+        double sum2 = summaryResponse.getCountries().stream()
+                .map(x -> x.getNewConfirmed())
+                .map(x -> Double.parseDouble(x))
+                .reduce(Double::sum).get();
+        System.out.println(summaryResponse.getGlobal().getNewConfirmed());
+        System.out.println(sum);
+
 
     }
 }

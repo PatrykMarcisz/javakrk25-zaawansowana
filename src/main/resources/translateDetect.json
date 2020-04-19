@@ -1,0 +1,12 @@
+{
+  "success": true,
+  "results": [
+    {
+      "language_code": "pl",
+      "language_name": "Polish",
+      "probability": 3.96110730906532,
+      "percentage": 100,
+      "reliable_result": false
+    }
+  ]
+}
