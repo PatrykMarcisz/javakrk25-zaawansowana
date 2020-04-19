@@ -17,6 +17,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class CurrencyGui extends Application {
@@ -28,14 +29,13 @@ public class CurrencyGui extends Application {
 
         //pierwsza linia: "Podaj walutę źródłową" , [wybor]
         Set<String> currencies = HttpApiTest.getAvailableCurrencies(HttpClient.newHttpClient(), new ObjectMapper());
-        HBox firstLine = new HBox();
-        Label firstLineLabel = new Label("Podaj walutę źródłową");
-        ComboBox<String> availableCurrencies = new ComboBox<>(FXCollections.observableList(new ArrayList<>(currencies)));
-        firstLine.getChildren().addAll(firstLineLabel, availableCurrencies);
+        FirstLine firstLine = new FirstLine("Podaj walutę źródłową", new ArrayList<>(currencies));
+
         //druga linijka: "podaj kwotę" [wybor]
         Label secondLineLabel = new Label("Podaj kwotę");
         TextField secondLineField = new TextField();
         HBox secondLine = new HBox(secondLineLabel, secondLineField);
+
         //trzecia linijka "poda walute docelowa", [wybor]
         Label thirdLineLabel = new Label("Podaj walutę docelową");
         ComboBox<String> availableCurrencies2 = new ComboBox<>(FXCollections.observableList(new ArrayList<>(currencies)));
@@ -49,7 +49,7 @@ public class CurrencyGui extends Application {
         processButton.setOnAction(e -> {
             try {
                 double courseFor = HttpApiTest.getCourseFor(HttpClient.newHttpClient(), new ObjectMapper(),
-                        availableCurrencies.getSelectionModel().getSelectedItem(),
+                        firstLine.getAvailableCurrencies().getSelectionModel().getSelectedItem(),
                         availableCurrencies2.getSelectionModel().getSelectedItem());
                 result.setText(String.valueOf(courseFor));
             } catch (IOException ex) {
@@ -71,4 +71,23 @@ public class CurrencyGui extends Application {
         Application.launch(CurrencyGui.class);
     }
 
+}
+
+class FirstLine extends HBox{
+    Label firstLineLabel;
+    ComboBox<String> availableCurrencies;
+
+    public FirstLine(String labelText, List<String> comboBoxContent){
+        this.firstLineLabel = new Label(labelText);
+        this.availableCurrencies = new ComboBox<>(FXCollections.observableList(comboBoxContent));
+        this.getChildren().addAll(firstLineLabel, availableCurrencies);
+    }
+
+    public Label getFirstLineLabel() {
+        return firstLineLabel;
+    }
+
+    public ComboBox<String> getAvailableCurrencies() {
+        return availableCurrencies;
+    }
 }
